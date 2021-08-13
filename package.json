@@ -1,0 +1,29 @@
+{
+  "name": "team-profile-generator-cli",
+  "version": "1.0.0",
+  "description": "This Command-line Interface (CLI) is used to generate the profiles of a team of any organisation based upon the given input.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "dependencies": {
+    "inquirer": "^8.1.2",
+    "jest": "^27.0.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vish-opatha/team-profile-generator-cli.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vish-opatha/team-profile-generator-cli/issues"
+  },
+  "homepage": "https://github.com/vish-opatha/team-profile-generator-cli#readme"
+}
