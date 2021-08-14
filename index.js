@@ -9,7 +9,7 @@ let team = [];
 const questions = [
     {
       type: 'input',
-      name: 'mgrName',
+      name: 'manager',
       message: "What's the team manager's name?",
     },
     {
@@ -60,14 +60,14 @@ const questions = [
   ];
 
   const engineerQuestions = [
-    { type: 'input', name: 'engName', message: "What's your engineer's name?", },
+    { type: 'input', name: 'engineer', message: "What's your engineer's name?", },
     { type: 'input', name: 'engId', message: "What's your engineer's Id?", },
     { type: 'input', name: 'engEmail', message: "What's your engineer's email?",},
     { type: 'input', name: 'gitHub', message: "What's your engineer's Github?",},
   ];
 
   const internQuestions = [
-    { type: 'input', name: 'intName', message: "What's your intern's name?", },
+    { type: 'input', name: 'intern', message: "What's your intern's name?", },
     { type: 'input', name: 'intId', message: "What's your intern's Id?", },
     { type: 'input', name: 'intEmail', message: "What's your intern's email?",},
     { type: 'input', name: 'school', message: "What's your intern's school?",},
@@ -98,6 +98,7 @@ const questions = [
         {
             inquirer.prompt(engineerQuestions).then((answers) => {
                 team.push(JSON.stringify(answers));
+                
             }).then(()=>{
                 buildTeam();
             }); 
@@ -113,7 +114,7 @@ const questions = [
         }
         
         else{
-            console.log('This will end');
+            console.log(team);
         }
       });
   }
