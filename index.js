@@ -4,6 +4,7 @@ const inquirer = require("inquirer");
 const Manager = require("./lib/Manager");
 const Engineer = require ("./lib/Engineer");
 const intern = require("./lib/Intern");
+let team = [];
 
 const questions = [
     {
@@ -55,25 +56,60 @@ const questions = [
         name: 'typeOfTeamMember',
         message: "What type of team member would you like to add?",
         choices: [`Engineer`, `Intern`, `I don't want to add anyone`],
-        loop: true,
     },
+  ];
 
-  ]
+  const engineerQuestions = [
+    { type: 'input', name: 'engName', message: "What's your engineer's name?", },
+    { type: 'input', name: 'engId', message: "What's your engineer's Id?", },
+    { type: 'input', name: 'engEmail', message: "What's your engineer's email?",},
+    { type: 'input', name: 'gitHub', message: "What's your engineer's Github?",},
+  ];
 
-//   inquirer.prompt(questions).then((answers) => {
-//     console.log(JSON.stringify(answers, null, '  '));
-//   });
+  const internQuestions = [
+    { type: 'input', name: 'intName', message: "What's your intern's name?", },
+    { type: 'input', name: 'intId', message: "What's your intern's Id?", },
+    { type: 'input', name: 'intEmail', message: "What's your intern's email?",},
+    { type: 'input', name: 'school', message: "What's your intern's school?",},
+  ];
+
+  inquirer.prompt(questions).then((answers) => {
+      team.push(JSON.stringify(answers));
+  }).then(()=>{
+    buildTeam();
+        // if(anwersTwo.typeOfTeamMember ==='Engineer')
+        // {
+        //     inquirer.prompt(engineerQuestions).then((answers) => {
+        //         team.push(JSON.stringify(answers));
+        //     }).then(()=>{
+        //          buildTeam();
+        //     }); 
+        //     // buildTeam();  
+        // }
+    });
+  
+
+  
+
+  
   function buildTeam(){
     inquirer.prompt(questionsTeam).then((answers) => {
         if(answers.typeOfTeamMember ==='Engineer')
         {
-            console.log('eng');
-            buildTeam();
+            inquirer.prompt(engineerQuestions).then((answers) => {
+                team.push(JSON.stringify(answers));
+            }).then(()=>{
+                buildTeam();
+            }); 
+              
         }
 
         else if(answers.typeOfTeamMember === 'Intern'){
-            console.log('Intern');
-            buildTeam();
+            inquirer.prompt(internQuestions).then((answers) => {
+                team.push(JSON.stringify(answers));
+            }).then(()=>{
+                buildTeam();
+            }); 
         }
         
         else{
@@ -82,7 +118,7 @@ const questions = [
       });
   }
 
-  buildTeam();
+ 
   
 
 
