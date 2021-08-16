@@ -92,7 +92,7 @@ const internQuestions = [
     },
     { type: 'input', name: 'school', message: "What's your intern's school?",
       validate(value) {
-        const pass = value.match(/^[a-zA-Z]+$/);
+        const pass = value.match(/^[a-zA-Z+\s]+$/);
         if (pass) {
           return true;
         }
