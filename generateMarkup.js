@@ -1,49 +1,53 @@
-let markUpText = "";
-let remainder = 0;
-let numOfSections = 0;
-let remainingItems = 0;
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
+const Manager = require('./lib/Manager');
 
-// Function to decide the number of sections and columns needed for the layout
-// I am using Bulma and sample index file can be found on the repository as index.html
-function countColumns(teamDataArray){
-    let arrLength = teamDataArray.arrLength;
-
-    if(remainder===0) {
-      numOfSections = arrLength / 3;
-    }
-
-    else{
-      remainingItems = arrLength - remainder;
-      numOfSections = (items/3) + 1 ;
-    }
+function generateManagerDiv(mgr) {
+  return `
+  <div class="card m-3 p-0 bg-light border" style="width: 18rem;">
+      <div class="card-body bg-danger text-white">
+          <h5 class="card-title">${mgr.empName}</h5>
+          <p class="card-text">Manager</p>
+      </div>
+      <ul class="list-group m-3 border border-secondary">
+          <li class="list-group-item">ID: ${mgr.id}</li>
+          <li class="list-group-item">Email: <a href="mailto:${mgr.empEmail}">${mgr.empEmail}</a></li>
+          <li class="list-group-item">Office Number: ${mgr.officeNumber}</li>
+      </ul>
+  </div>
+  `;
 }
 
-// This function generates the markup text to write to the file.
-function generateMarkupText(teamArray){
-    countColumns(teamArray);
-    markUpText = `
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-        <title>Software Development Team</title>
-      </head>
-
-      <body>
-        <!--Header section with the topic-->
-        <div class="section has-background-success-dark has-shadow is-vcentered">
-            <div class="container ">
-                <h1 class="is-size-3 title has-text-centered has-text-light "> Software Development Team </h1>
-            </div>
-        </div> `;
-        //The part of the function is yet to be completed.
-        //Please see the designed index.html file.
-
-    return markUpText;
-
+function generateEngineerDiv(eng) {
+  return `
+  <div class="card m-3 p-0 bg-light border" style="width: 18rem;">
+      <div class="card-body bg-success text-white">
+          <h5 class="card-title">${eng.empName}</h5>
+          <p class="card-text">Engineer</p>
+      </div>
+      <ul class="list-group list-group-flush m-3 border border-secondary">
+          <li class="list-group-item">ID: ${eng.id}</li>
+          <li class="list-group-item">Email: <a href="mailto:${eng.empEmail}">${eng.empEmail}</a></li>
+          <li class="list-group-item">GitHub: <a href="${eng.github}" target="_blank">${eng.gitHub}</a></li>
+      </ul>
+  </div>
+  `;
 }
 
-module.exports = generateMarkupText;
+function generateInternDiv(intern) {
+  return `
+  <div class="card m-3 p-0 bg-light border border-secondary" style="width: 18rem;">
+      <div class="card-body bg-success text-white">
+          <h5 class="card-title">${intern.empName}</h5>
+          <p class="card-text">Intern</p>
+      </div>
+      <ul class="list-group list-group-flush m-3 border border-secondary">
+          <li class="list-group-item">ID: ${intern.id}</li>
+          <li class="list-group-item">Email: <a href="mailto:${intern.empEmail}">${intern.empEmail}</a></li>
+          <li class="list-group-item">School: ${intern.school}</li>
+      </ul>
+  </div>
+  `;
+}
+
+module.exports = generateMarkup;
