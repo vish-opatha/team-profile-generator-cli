@@ -25,49 +25,58 @@ describe('Manager Class', () => {
     });
   });
   describe('Manager Methods', () => {
-    it('Returns the employee name when getName() is called', () => {
+    it('Returns the Manager name when getName() is called', () => {
       const id = 1;
       const empName = 'V Opatha';
       const empEmail = 'opatha@gmail.com';
       const officeNumber = '0480000000';
 
-      const employee = new Employee(id, empName, empEmail);
-
-      const employeeName = employee.getName();
-
-      expect(employeeName).toEqual(empName);
+      const managerObj = new Manager(id, empName, empEmail, officeNumber);
+      const mgrName = managerObj.getName();
+      expect(mgrName).toEqual(empName);
     });
-    it('Returns the employee id value when getId() is called', () => {
+    it('Returns the Manager id value when getId() is called', () => {
       const id = 1;
       const empName = 'V Opatha';
       const empEmail = 'opatha@gmail.com';
+      const officeNumber = '0480000000';
 
-      const employee = new Employee(id, empName, empEmail);
-
-      const employeeId = employee.getId();
-
-      expect(employeeId).toEqual(id);
+      const managerObj = new Manager(id, empName, empEmail, officeNumber);
+      const mgrId = managerObj.getId();
+      expect(mgrId).toEqual(id);
     });
     it('Returns the email when getEmail() is called', () => {
       const id = 1;
       const empName = 'V Opatha';
       const empEmail = 'opatha@gmail.com';
+      const officeNumber = '0480000000';
 
-      const employee = new Employee(id, empName, empEmail);
+      const managerObj = new Manager(id, empName, empEmail, officeNumber);
+      const mgrEmail = managerObj.getEmail();
 
-      const employeeEmail = employee.getEmail();
-
-      expect(employeeEmail).toEqual(empEmail);
+      expect(mgrEmail).toEqual(empEmail);
     });
-    it("Returns 'employee' when getRole() is called", () => {
+    it('Returns the office number when getOfficeNumber() is called', () => {
       const id = 1;
       const empName = 'V Opatha';
       const empEmail = 'opatha@gmail.com';
+      const officeNumber = '0480000000';
 
-      const employee = new Employee(id, empName, empEmail);
-      const employeeRole = employee.getRole();
+      const managerObj = new Manager(id, empName, empEmail, officeNumber);
+      const telephone = managerObj.getOfficeNumber();
 
-      expect(employeeRole).toEqual('employee');
+      expect(telephone).toEqual(officeNumber);
+    });
+    it("Returns 'Manager' when getRole() is called", () => {
+      const id = 1;
+      const empName = 'V Opatha';
+      const empEmail = 'opatha@gmail.com';
+      const officeNumber = '0480000000';
+
+      const managerObj = new Manager(id, empName, empEmail, officeNumber);
+      const role = managerObj.getRole();
+
+      expect(role).toEqual('Manager');
     });
   });
 });
