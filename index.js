@@ -3,7 +3,8 @@ const inquirer = require('inquirer');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
-const generateMarkupText = require('./generateMarkup.js');
+const generateHTML = require('./generateMarkup.js');
+const fs = require('fs');
 let team = [];
 
 // Questions to create Manager object
@@ -133,8 +134,8 @@ const internQuestions = [
 
 // Function to write team details to HTML
 function writeToHtml(fileName, data) {
-  const markUpText = generateMarkupText(data);
-  fs.writeFile(fileName, markUpText, (err) =>
+  // const markUpText = generateMarkupText(data);
+  fs.writeFile(fileName, data, (err) =>
     err
       ? console.log(err)
       : console.log('You have successfully created your team!')
@@ -143,58 +144,62 @@ function writeToHtml(fileName, data) {
 
 // Function to create the other members except the manager
 function buildTeam() {
-  inquirer.prompt(questionsTeam).then((answers) => {
-    // If the selected team member is an engineer
-    if (answers.typeOfTeamMember === 'Engineer') {
-      inquirer
-        .prompt(engineerQuestions)
-        .then((answers) => {
-          let engObj = new Engineer(
-            answers.engId,
-            answers.eName,
-            answers.engEmail,
-            answers.gitHub
-          );
-          team.push(engObj);
-          // team.push(engObj);
-        })
-        .then(() => {
-          buildTeam();
-        });
-    }
+  try {
+    inquirer.prompt(questionsTeam).then((answers) => {
+      // If the selected team member is an engineer
+      if (answers.typeOfTeamMember === 'Engineer') {
+        inquirer
+          .prompt(engineerQuestions)
+          .then((answers) => {
+            let engObj = new Engineer(
+              answers.engId,
+              answers.eName,
+              answers.engEmail,
+              answers.gitHub
+            );
+            team.push(engObj);
+            // team.push(engObj);
+          })
+          .then(() => {
+            buildTeam();
+          });
+      }
 
-    // If the selected team member is an intern
-    else if (answers.typeOfTeamMember === 'Intern') {
-      inquirer
-        .prompt(internQuestions)
-        .then((answers) => {
-          let internObj = new Intern(
-            answers.intId,
-            answers.iName,
-            answers.intEmail,
-            answers.school
-          );
-          team.push(internObj);
-          //team.push(internObj);
-        })
-        .then(() => {
-          buildTeam();
-        });
-    }
+      // If the selected team member is an intern
+      else if (answers.typeOfTeamMember === 'Intern') {
+        inquirer
+          .prompt(internQuestions)
+          .then((answers) => {
+            let internObj = new Intern(
+              answers.intId,
+              answers.iName,
+              answers.intEmail,
+              answers.school
+            );
+            team.push(internObj);
+            //team.push(internObj);
+          })
+          .then(() => {
+            buildTeam();
+          });
+      }
 
-    // If the user selects No one to add to the team html file will be created.
-    else {
-      let filename = 'index.html';
-      // let totalTeam = JSON.parse(team);
-      console.log(`This is the stringify object ${team}`);
-      team.map((a) => {
-        console.log(a);
-      });
-      // console.log(`This is the total team object ${totalTeam}`);
-      // Function buildTeam is supposed to be called here.
-      // writeToHtml(fileName, team)
-    }
-  });
+      // If the user selects No one to add to the team html file will be created.
+      else {
+        let filename = 'index.html';
+        console.log(`This is the stringify object ${team}`);
+        generateHTML(team)
+          .then((data) => {
+            writeToHtml(filename, data);
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      }
+    });
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 // Initiallization function
