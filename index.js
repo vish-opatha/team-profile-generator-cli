@@ -3,7 +3,7 @@ const inquirer = require('inquirer');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
-const generateHTML = require('./generateMarkup.js');
+const generateMarkup = require('./generateMarkup.js');
 const fs = require('fs');
 let team = [];
 
@@ -50,7 +50,7 @@ const mgrQuestions = [
   },
 ];
 
-// Question to select the type of team member /^[a-z\u00C0-\u02AB'´`]+\.?\s([a-z\u00C0-\u02AB'´`]+\.?\s?)+$/
+// Question to select the type of team member
 const questionsTeam = [
   {
     type: 'list',
@@ -134,7 +134,6 @@ const internQuestions = [
 
 // Function to write team details to HTML
 function writeToHtml(fileName, data) {
-  // const markUpText = generateMarkupText(data);
   fs.writeFile(fileName, data, (err) =>
     err
       ? console.log(err)
@@ -158,7 +157,6 @@ function buildTeam() {
               answers.gitHub
             );
             team.push(engObj);
-            // team.push(engObj);
           })
           .then(() => {
             buildTeam();
@@ -177,7 +175,6 @@ function buildTeam() {
               answers.school
             );
             team.push(internObj);
-            //team.push(internObj);
           })
           .then(() => {
             buildTeam();
@@ -187,8 +184,7 @@ function buildTeam() {
       // If the user selects No one to add to the team html file will be created.
       else {
         let filename = 'index.html';
-        console.log(`This is the stringify object ${team}`);
-        generateHTML(team)
+        generateMarkup(team)
           .then((data) => {
             writeToHtml(filename, data);
           })
