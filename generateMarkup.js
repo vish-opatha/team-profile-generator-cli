@@ -81,7 +81,7 @@ function generateEngineerDiv(eng) {
       <ul class="list-group m-3">
           <li class="list-group-item">ID: ${eng.id}</li>
           <li class="list-group-item">Email: <a href="mailto:${eng.empEmail}">${eng.empEmail}</a></li>
-          <li class="list-group-item">GitHub: <a href="https://github.com/${eng.github}" target="_blank">${eng.gitHub}</a></li>
+          <li class="list-group-item">GitHub: <a href="https://github.com/${eng.gitHub}" target="_blank">${eng.gitHub}</a></li>
       </ul>
   </div>
   `;
