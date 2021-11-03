@@ -21,19 +21,19 @@ describe('Engineer Class', () => {
       expect(engineerObj.id).toEqual(id);
       expect(engineerObj.empName).toEqual(empName);
       expect(engineerObj.empEmail).toEqual(empEmail);
-      expect(engineerObj.officeNumber).toEqual(officeNumber);
+      expect(engineerObj.gitHub).toEqual(gitHub);
     });
   });
-  describe('Manager Methods', () => {
-    it('Returns the Manager name when getName() is called', () => {
+  describe('Engineer Methods', () => {
+    it('Returns the name when getName() is called', () => {
       const id = 1;
       const empName = 'V Opatha';
       const empEmail = 'opatha@gmail.com';
       const gitHub = 'vish-opatha';
 
       const engineerObj = new Engineer(id, empName, empEmail, gitHub);
-      const mgrName = managerObj.getName();
-      expect(mgrName).toEqual(empName);
+      const engineerName = engineerObj.getName();
+      expect(engineerName).toEqual(empName);
     });
     it('Returns the Manager id value when getId() is called', () => {
       const id = 1;
@@ -42,8 +42,8 @@ describe('Engineer Class', () => {
       const gitHub = 'vish-opatha';
 
       const engineerObj = new Engineer(id, empName, empEmail, gitHub);
-      const mgrId = managerObj.getId();
-      expect(mgrId).toEqual(id);
+      const engineerId = engineerObj.getId();
+      expect(engineerId).toEqual(id);
     });
     it('Returns the email when getEmail() is called', () => {
       const id = 1;
@@ -52,9 +52,9 @@ describe('Engineer Class', () => {
       const gitHub = 'vish-opatha';
 
       const engineerObj = new Engineer(id, empName, empEmail, gitHub);
-      const mgrEmail = managerObj.getEmail();
+      const engineerEmail = engineerObj.getEmail();
 
-      expect(mgrEmail).toEqual(empEmail);
+      expect(engineerEmail).toEqual(empEmail);
     });
     it('Returns the Github account when getGithub() is called', () => {
       const id = 1;
@@ -63,20 +63,20 @@ describe('Engineer Class', () => {
       const gitHub = 'vish-opatha';
 
       const engineerObj = new Engineer(id, empName, empEmail, gitHub);
-      const telephone = managerObj.getOfficeNumber();
+      const github = engineerObj.getGithub();
 
-      expect(telephone).toEqual(officeNumber);
+      expect(github).toEqual(gitHub);
     });
-    it("Returns 'Manager' when getRole() is called", () => {
+    it("Returns 'Engineer' when getRole() is called", () => {
       const id = 1;
       const empName = 'V Opatha';
       const empEmail = 'opatha@gmail.com';
-      const officeNumber = '0480000000';
+      const gitHub = 'vish-opatha';
 
-      const managerObj = new Engineer(id, empName, empEmail, officeNumber);
-      const role = managerObj.getRole();
+      const engineerObj = new Engineer(id, empName, empEmail, gitHub);
+      const role = engineerObj.getRole();
 
-      expect(role).toEqual('Manager');
+      expect(role).toEqual('Engineer');
     });
   });
 });
