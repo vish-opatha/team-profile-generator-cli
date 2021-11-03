@@ -53,6 +53,7 @@ async function generateMarkup(teamObjectArray) {
 `;
 }
 
+// Function to generate Manager div
 function generateManagerDiv(mgr) {
   return `
   <div class="card m-3 p-0 bg-light border" style="width: 18rem;">
@@ -69,6 +70,7 @@ function generateManagerDiv(mgr) {
   `;
 }
 
+// Function to generate Engineer div
 function generateEngineerDiv(eng) {
   return `
   <div class="card m-3 p-0 bg-light border" style="width: 18rem;">
@@ -85,6 +87,7 @@ function generateEngineerDiv(eng) {
   `;
 }
 
+// Function to generate Intern div
 function generateInternDiv(intern) {
   return `
   <div class="card m-3 p-0 bg-light border" style="width: 18rem;">
