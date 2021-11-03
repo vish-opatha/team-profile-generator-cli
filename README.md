@@ -21,15 +21,13 @@ This **command line application (CLI)** facilitates the user to create a web pag
 Following are the important links related to this application.
 
 - [Team profile generator - Github Repo](https://github.com/vish-opatha/team-profile-generator-cli)
-- [Walkthrough Video](https://drive.google.com/file/d/1vhYlg1mLTU8D2uR8s-dZn54WPvT2Ks2J/view?usp=sharing)
+- [Walkthrough Video](https://drive.google.com/file/d/1g2RlR9vYFW5gxGjfx-CgmQhtYDvQ45_L/view?usp=sharing)
 
 ## Mock-up
 
-Following images shows the way of getting user inputs and the final README file that is created with the user inputs.
+_Index.html_
 
-_Command line for user input_
-
-![Command line input](./images/prompts.JPG)
+![Team Profile Page](./images/index.png)
 
 ## Installation
 
@@ -60,6 +58,8 @@ npm test
 This project is based on command line and the user is prompted with various types of questions by using the inquirer package. Those details are collected and handled by using Javascript and run using Node.js. Inquirer package is used to prompt the questions to the user in order to get the user inputs. There are a number questions prompted to the user,related to the repository to generate the team profile.
 
 Validation is used in getting the names, emails, school and telephone number correctly in all prompts. And according to the selection of type of the team, team member objects are created and pushed to the array.
+
+Finally, html file is created and saved in the given location. With regards to the tests, all the automated test suites passed as expected.
 
 ## Repository Quality Work Done
 
